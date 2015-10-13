@@ -1,1 +1,32 @@
 <h1>Welcome to Dashboard</h1>
+<p id="notice"><%= notice %></p>
+
+<h4>Your shared links</h4>
+
+<table>
+  <thead>
+    <tr>
+      <!-- <th>User</th> -->
+      <th>Link</th>
+      <th>Link type</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @links.each do |link| %>
+      <tr>
+        <!-- <td><%= link.user_id %></td> -->
+        <td><%= link.link %></td>
+        <td><%= link.link_type %></td>
+        <!-- <td><%#= link_to 'Show', link %></td>
+        <td><%#= link_to 'Edit', edit_link_path(link) %></td>
+        <td><%#= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Link', new_link_path %>
