@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  has_many :links
+
   # overwite for user login
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
