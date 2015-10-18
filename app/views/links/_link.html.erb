@@ -1,0 +1,13 @@
+<tr>
+  <!-- <td><%= link.user_id %></td> -->
+  <td><%= link.link %></td>
+  <td><%= link.link_type %></td>
+  <%#= Rails.logger.info(object) %>
+  <%#= Rails.logger.info(link) %>
+  <% if user_signed_in? and link.user.username == current_user.username %>
+    <td><%#= object.email %></td>
+    <!-- <td><%#= link_to 'Show', link %></td> -->
+    <td><%= link_to 'Edit', edit_link_path(link) %></td>
+    <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+</tr>

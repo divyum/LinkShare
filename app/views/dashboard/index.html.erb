@@ -2,7 +2,19 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
 <!-- <h4>Your shared links</h4> -->
-
+<%= form_for(@link, remote: true) do |f| %>
+  <div class="link_share">
+    <div class="field" style="display: inline">
+      <%= f.label :link %>
+      <%= f.text_field :link %>
+      <%= f.label :link_type %>
+      <%= f.text_field :link_type %>
+    </div>
+    <div class="actions" style="display: inline">
+      <%= f.submit 'Share'%>
+    </div>
+  </div>
+  <% end %>
 
 <% if @links.empty? %>
   <p>No Links</p>

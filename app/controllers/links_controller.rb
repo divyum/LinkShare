@@ -1,10 +1,23 @@
 class LinksController < ApplicationController
+  # before_filter :authenticate_user!
   before_action :set_link, only: [:show, :edit, :update, :destroy]
 
   # GET /links
   # GET /links.json
   def index
-    @links = Link.where(:user_id => current_user)
+    @link = Link.new
+    @user = User.find_by_username(params[:username])
+    if user_signed_in? and @user == current_user
+      @links = current_user.links.reverse
+    else
+      @links = @user.links.where(:link_type => 'public').reverse
+    end
+
+    respond_to do |format|
+      format.html  # index.html.erb
+      format.json  { render :json => @links }
+      format.js
+    end
   end
 
   # GET /links/1
@@ -25,11 +38,13 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = Link.new(link_params)
+    @link.user_id = current_user.id
 
     respond_to do |format|
       if @link.save
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @link.errors, status: :unprocessable_entity }
@@ -56,7 +71,7 @@ class LinksController < ApplicationController
   def destroy
     @link.destroy
     respond_to do |format|
-      format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Link was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
