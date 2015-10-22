@@ -43,12 +43,12 @@ class LinksController < ApplicationController
 
     respond_to do |format|
       if @link.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
         format.js
       else
-        format.html { render :new }
+        # puts @link.errors.full_messages
         format.json { render json: @link.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -80,7 +80,7 @@ class LinksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
-      @link = Link.find(params[:username])
+      @link = Link.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
