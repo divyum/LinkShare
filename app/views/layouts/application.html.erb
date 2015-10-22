@@ -14,7 +14,7 @@
 
 <%= yield %>
 
-<% if controller_name != 'sessions' && controller_name != 'registrations' %>
+<% if controller_name != 'sessions' && controller_name != 'registrations' && controller_name != 'homepage' %>
   <%= render 'layouts/user_widget' %>
 <% end %>
 

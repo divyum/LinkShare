@@ -1,19 +1,21 @@
 <p id="notice"><%= notice %></p>
-<h1>Welcome to Dashboard</h1>
+<div class="center">
+<h1>Welcome to Share it</h1><br><br>
 <% if @user == current_user %>
   <%= render 'form' %>
+  <br><br>
 <% end %>
+</div>
 
 <% if @links.empty? %>
   <p>No Links</p>
 <% else %>
-  <table>
+  <table id="main_table">
     <thead>
       <tr>
-        <!-- <th>User</th> -->
-        <th>Link</th>
-        <th>Link type</th>
-        <th colspan="5"></th>
+        <th id="link_col">Link</th>
+        <th colspan="100">Link type</th>
+        <!-- <th colspan="10"></th> -->
       </tr>
     </thead>
     <tbody class="link_table">
@@ -25,6 +27,4 @@
 <% end %>
 <br>
 
-<% if @user.username != current_user.username %>
-  <%= link_to 'New Link', "/#{current_user.username}" %>
-<% end %>
+<%#= link_to 'New Link', "/#{current_user.username}" %>

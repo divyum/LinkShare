@@ -40,6 +40,7 @@ class LinksController < ApplicationController
     @link = Link.new(link_params)
     @link.user_id = current_user.id
 
+
     respond_to do |format|
       if @link.save
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
@@ -79,7 +80,7 @@ class LinksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_link
-      @link = Link.find(params[:id])
+      @link = Link.find(params[:username])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
