@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   resources :links
   devise_for :users
-  resources :dashboard
   root to: 'homepage#index'
   get '/:username' => 'links#index'
   # get '/links/new' => 'links#index', as: :username
