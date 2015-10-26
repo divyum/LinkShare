@@ -26,5 +26,4 @@
   </table>
 <% end %>
 <br>
-
-<%#= link_to 'New Link', "/#{current_user.username}" %>
+<%= will_paginate @links, renderer: BootstrapPagination::Rails %>

@@ -8,7 +8,8 @@ class LinksController < ApplicationController
     @link = Link.new
     @user = User.find_by_username(params[:username])
     if user_signed_in? and @user == current_user
-      @links = current_user.links.reverse
+      @links = current_user.links.order('created_at DESC').page(params[:page]).per_page(15)
+      # @links = current_user.links.reverse
     else
       @links = @user.links.where(:link_type => 'public').reverse
     end
