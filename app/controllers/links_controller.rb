@@ -11,7 +11,8 @@ class LinksController < ApplicationController
       @links = current_user.links.order('created_at DESC').page(params[:page]).per_page(15)
       # @links = current_user.links.reverse
     else
-      @links = @user.links.where(:link_type => 'public').reverse
+      @links = @user.links.where(:link_type => 'public').order('created_at DESC').page(params[:page]).per_page(15)
+      # @links = @user.links.where(:link_type => 'public').reverse
     end
 
     respond_to do |format|
@@ -86,6 +87,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:user_id, :link, :link_type)
+      params.require(:link).permit(:user_id, :link, :link_type, :description)
     end
 end

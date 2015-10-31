@@ -1,5 +1,5 @@
 <tr>
-  <td id="link_data"><%= link.link %></td>
+  <td id="link_data"><%= link_to(link.description, "http://"+link.link, { target: '_blank' }) %></td>
   <td id="link_opt"><%= link.link_type %></td>
   <% if user_signed_in? and link.user.username == current_user.username %>
     <td id="link_opt"><%= link_to 'Edit', edit_link_path(link) %>

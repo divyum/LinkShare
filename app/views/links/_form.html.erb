@@ -1,9 +1,14 @@
 <%= form_for(@link, remote: true) do |f| %>
   <div class="link_share">
     <div class="field" style="display: inline">
-      <%= f.text_field :link, :id => "link_box", placeholder: 'Paste your link' %>
+      <%= f.text_field :description, :class => "link_box", placeholder: 'Add Description Here' %>
       &nbsp&nbsp
-      <%= f.text_field :link_type %>
+      <%= f.text_field :link, :class => "link_box", placeholder: 'Paste your link' %>
+      &nbsp&nbsp
+      <%= f.label :link_type, "public", :value => "public" %>
+      <%= f.radio_button :link_type, "public", :checked => true %>
+      <%= f.label :link_type, "private", :value => "private" %>
+      <%= f.radio_button :link_type, "private" %>
     </div>
     <div class="actions" style="display: inline">
       <%= f.submit 'Share', class: 'btn btn-lg btn-primary'%>
