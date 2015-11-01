@@ -5,6 +5,8 @@
       &nbsp&nbsp
       <%= f.text_field :link, :class => "link_box", placeholder: 'Paste your link' %>
       &nbsp&nbsp
+      <%= f.text_field :tag_list, placeholder: 'tags' %><br/><br/>
+      &nbsp&nbsp
       <%= f.label :link_type, "public", :value => "public" %>
       <%= f.radio_button :link_type, "public", :checked => true %>
       <%= f.label :link_type, "private", :value => "private" %>

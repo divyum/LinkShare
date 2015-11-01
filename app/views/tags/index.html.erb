@@ -1,0 +1,9 @@
+<h1>Tags</h1>
+<% if @tags.empty? %>
+  <p>No Tags</p>
+<% else %>
+  <% @tags.each do |tag| %>
+    <%#= tag.name %>
+    <%= render tag %>
+  <% end %>
+<% end %>

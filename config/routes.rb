@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :links
   devise_for :users
+  resources :tags, only: [:index, :show]
   root to: 'homepage#index'
   get '/:username' => 'links#index'
   # get '/links/new' => 'links#index', as: :username
